@@ -1,0 +1,17 @@
+syntax = "proto3";
+package usuario;
+
+message ProtoUsuario {
+    string userId = 1;
+    string username = 2;
+}
+
+message ProtoUsuarioList {
+    repeated ProtoUsuario usuarios = 1;
+}
+
+service ProtoUsuarioService {
+    rpc FindAll (Empty) returns(ProtoUsuarioList);
+}
+
+message Empty {}

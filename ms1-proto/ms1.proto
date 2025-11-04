@@ -1,0 +1,5 @@
+syntax = "proto3";
+package usuario;
+
+import "usuario.proto";
+//y proximamente los demas vehiculo.proto y auth.proto
