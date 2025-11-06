@@ -4,6 +4,13 @@ package usuario;
 message ProtoUsuario {
     string userId = 1;
     string username = 2;
+    string role = 3;
+}
+
+message CrearUsuario {
+    string username = 1;
+    string password = 2;
+    string role = 3;
 }
 
 message ProtoUsuarioList {
@@ -12,6 +19,7 @@ message ProtoUsuarioList {
 
 service ProtoUsuarioService {
     rpc FindAll (Empty) returns(ProtoUsuarioList);
+    rpc CrearCuenta (CrearUsuario) returns(ProtoUsuario);
 }
 
 message Empty {}
