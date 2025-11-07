@@ -1,0 +1,11 @@
+syntax = "proto3";
+package vehiculo;
+
+message ProtoVehiculo {
+    string vehiculoId = 1;
+    string ownerId = 2;
+    string mecanicoId = 3;
+    string marca = 4;
+    string modelo = 5;
+    string patente = 6;
+}
