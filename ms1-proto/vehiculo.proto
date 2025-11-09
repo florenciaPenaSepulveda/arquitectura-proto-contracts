@@ -9,3 +9,33 @@ message ProtoVehiculo {
     string modelo = 5;
     string patente = 6;
 }
+
+message CrearVehiculo{
+    string ownerId = 1;
+    string mecanicoId = 2;
+    string marca = 3;
+    string modelo = 4;
+    string patente = 5;
+}
+
+message ProtoVehiculoList{
+    repeated ProtoVehiculo vehiculos = 1;
+}
+
+message VehiculosPorClienteRequest{
+    string ownerId = 1;
+}
+
+message VehiculosPorClienteDataResponse{
+    string ownerId = 1;
+    string nombreCliente = 2;
+    repeated ProtoVehiculo vehiculos = 3;
+}
+
+service ProtoVehiculoService{
+    rpc FindAll (Empty) returns (ProtoVehiculoList);
+    rpc CrearVehiculo (CrearVehiculo) returns (ProtoVehiculo);
+    rpc BuscarVehiculosPorIdCliente (VehiculosPorClienteRequest) returns(VehiculosPorClienteDataResponse);
+}
+
+message Empty{}

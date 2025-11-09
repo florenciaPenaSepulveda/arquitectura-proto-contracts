@@ -13,6 +13,10 @@ message CrearUsuario {
     string role = 3;
 }
 
+message FindUserByIdRequest{
+    string userId = 1;
+}
+
 message ProtoUsuarioList {
     repeated ProtoUsuario usuarios = 1;
 }
@@ -20,6 +24,7 @@ message ProtoUsuarioList {
 service ProtoUsuarioService {
     rpc FindAll (Empty) returns(ProtoUsuarioList);
     rpc CrearCuenta (CrearUsuario) returns(ProtoUsuario);
+    rpc FindUserById (FindUserByIdRequest) returns(ProtoUsuario);
 }
 
 message Empty {}
