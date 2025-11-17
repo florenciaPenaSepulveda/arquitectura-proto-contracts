@@ -2,4 +2,4 @@ syntax = "proto3";
 
 import "usuario.proto";
 import "vehiculo.proto";
-//y proximamente auth.proto
+import "auth.proto";
