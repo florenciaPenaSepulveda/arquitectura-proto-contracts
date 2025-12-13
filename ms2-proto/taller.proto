@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package taller;
+
+option java_multiple_files = true;
+option java_package = "arq.ms2.ms2.grpc";
+option java_outer_classname = "TallerProto";
+
+message CrearObservacionRequest {
+  string idCliente  = 1;
+  string idVehiculo = 2;
+  string idMecanico = 3;
+  string idReserva  = 4; // opcional: puede venir vacío ""
+  string texto      = 5;
+}
+
+message ObservacionResponse {
+  int64 id = 1;               // PK local MS2
+  string idCliente  = 2;
+  string idVehiculo = 3;
+  string idMecanico = 4;
+  string idReserva  = 5;
+  string texto      = 6;
+  string fechaCreacion = 7;   // ISO_LOCAL_DATE_TIME
+}
+
+message ListarPorVehiculoRequest { string idVehiculo = 1; }
+message ListarPorClienteRequest { string idCliente = 1; }
+message ListarPorReservaRequest { string idReserva = 1; }
+
+message ObservacionesListResponse {
+  repeated ObservacionResponse observaciones = 1;
+}
+
+service ObservacionesService {
+  rpc CrearObservacion(CrearObservacionRequest) returns (ObservacionResponse);
+  rpc ListarObservacionesPorVehiculo(ListarPorVehiculoRequest) returns (ObservacionesListResponse);
+  rpc ListarObservacionesPorCliente(ListarPorClienteRequest) returns (ObservacionesListResponse);
+  rpc ListarObservacionesPorReserva(ListarPorReservaRequest) returns (ObservacionesListResponse);
+}
